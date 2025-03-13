@@ -1,0 +1,42 @@
+pipeline {
+    agent any  // Runs on any available agent
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Jenkins-maste/TODOS.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'echo "Building the project..."'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'echo "Running tests..."'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying application..."'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
+
+
+
+
